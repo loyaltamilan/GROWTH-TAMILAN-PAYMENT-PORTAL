@@ -3,307 +3,396 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050816">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#060816">
+<meta name="description" content="Growth Tamilan Official Payment Portal">
 <title>Growth Tamilan | Official Payment Portal</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --cyan: #48eaff;
+  --purple: #9d72ff;
+  --bg: #060816;
+  --muted: #a9b6d4;
 }
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  background: #050816;
+  padding: 24px 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px 15px;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: var(--bg);
   overflow-x: hidden;
-  position: relative;
 }
-
 body::before {
   content: "";
   position: fixed;
-  inset: -50%;
-  background:
-    radial-gradient(circle at 20% 30%, #00d9ff35, transparent 30%),
-    radial-gradient(circle at 80% 60%, #7c3aed45, transparent 30%),
-    radial-gradient(circle at 50% 90%, #0066ff30, transparent 30%);
-  animation: aurora 12s ease-in-out infinite alternate;
+  inset: -40%;
   z-index: -2;
+  background:
+    radial-gradient(ellipse at 20% 25%, #00d9ff30, transparent 38%),
+    radial-gradient(ellipse at 80% 65%, #793cff40, transparent 38%),
+    radial-gradient(ellipse at 45% 90%, #006aff20, transparent 35%);
+  animation: aurora 12s ease-in-out infinite alternate;
 }
-
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(#ffffff08 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: linear-gradient(to bottom, black, transparent);
-  pointer-events: none;
   z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(#ffffff07 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff07 1px, transparent 1px);
+  background-size: 35px 35px;
 }
-
 @keyframes aurora {
-  0% { transform: translate(-4%, -3%) rotate(0deg) scale(1); }
-  100% { transform: translate(4%, 3%) rotate(8deg) scale(1.12); }
+  to { transform: translate(5%, 4%) rotate(8deg) scale(1.08); }
 }
-
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 18px #00d9ff25, 0 0 45px #7848ff18; }
-  50% { box-shadow: 0 0 35px #00d9ff50, 0 0 75px #7848ff30; }
+@keyframes shimmer {
+  to { background-position: 200% center; }
 }
-
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
 .portal {
   width: 100%;
-  max-width: 450px;
-  position: relative;
-  border: 1px solid #ffffff20;
-  border-radius: 28px;
-  background: linear-gradient(145deg, #111a32ed, #090d20f5);
-  backdrop-filter: blur(18px);
+  max-width: 440px;
   overflow: hidden;
-  animation: glow 5s ease-in-out infinite;
+  border: 1px solid #ffffff20;
+  border-radius: 26px;
+  background: #0c1226ee;
+  box-shadow: 0 0 65px #3d7dff20, 0 25px 80px #0008;
+  backdrop-filter: blur(20px);
 }
-
-.top-line {
+.topline {
   height: 3px;
-  background: linear-gradient(90deg, #00eaff, #8b5cf6, #00eaff);
-  background-size: 200%;
-  animation: moveLine 4s linear infinite;
+  background: linear-gradient(90deg, #00eaff, #985bff, #00eaff);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
 }
-
-@keyframes moveLine {
-  to { background-position: 200% 0; }
-}
-
-.header {
-  text-align: center;
-  padding: 34px 20px 25px;
-}
-
+header { padding: 28px 20px 22px; text-align: center; }
 .logo {
-  width: 66px;
-  height: 66px;
-  margin: 0 auto 17px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #00d9ff, #6754ff);
-  color: #fff;
+  width: 63px;
+  height: 63px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  border-radius: 19px;
+  background: linear-gradient(135deg, #00cfff, #7551ff);
+  box-shadow: 0 0 30px #00cfff35;
   font-size: 25px;
   font-weight: 900;
-  box-shadow: 0 0 35px #00c8ff40;
   animation: float 4s ease-in-out infinite;
 }
-
-.header h1 {
-  font-size: clamp(26px, 7vw, 33px);
-  letter-spacing: 1px;
-  font-weight: 800;
-  background: linear-gradient(90deg, #fff, #71eaff, #c8b8ff);
+h1 {
+  font-size: clamp(25px, 7vw, 32px);
+  background: linear-gradient(90deg, #fff, var(--cyan), #c5a9ff, #fff);
+  background-size: 200% auto;
+  color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  animation: shimmer 6s linear infinite;
 }
-
-.tagline {
-  margin-top: 12px;
-  color: #a8b6d7;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.divider {
-  height: 1px;
-  margin: 0 25px;
-  background: linear-gradient(90deg, transparent, #ffffff35, transparent);
-}
-
-.welcome {
-  text-align: center;
-  padding: 25px 22px 18px;
-}
-
-.welcome h2 {
-  font-size: 23px;
-  margin-bottom: 12px;
-}
-
-.welcome h2 span {
-  color: #50dcff;
-}
-
-.welcome p {
-  color: #aab6d1;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 18px;
-  padding: 9px 14px;
-  border: 1px solid #00e0ff45;
-  background: #00d9ff0d;
-  color: #8cecff;
-  border-radius: 30px;
+.kicker {
+  margin-top: 10px;
   font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 2px;
+}
+.welcome { text-align: center; padding: 12px 22px 22px; }
+.welcome h2 { font-size: 21px; margin-bottom: 10px; }
+.welcome h2 span { color: var(--cyan); }
+.welcome p { color: var(--muted); font-size: 13px; line-height: 1.8; }
+.secure {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 9px 13px;
+  border-radius: 30px;
+  border: 1px solid #40e9b650;
+  color: #77f5c0;
+  font-size: 10px;
   letter-spacing: 1px;
 }
-
-.dot {
-  width: 7px;
-  height: 7px;
-  background: #45f6a6;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #45f6a6;
+.section { padding: 8px 23px 25px; }
+label {
+  display: block;
+  margin: 0 0 9px;
+  font-size: 13px;
+  color: #e1eaff;
 }
-
-.qr-section {
-  padding: 12px 24px 28px;
-  text-align: center;
-}
-
-.qr-title {
-  font-size: 14px;
-  color: #e2eaff;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-.qr-frame {
-  position: relative;
-  width: min(100%, 285px);
-  margin: auto;
-  padding: 10px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #00eaff, #8b5cf6, #00eaff);
-  background-size: 200% 200%;
-  animation: moveLine 5s linear infinite;
-}
-
-.qr-inner {
-  padding: 12px;
-  background: #fff;
-  border-radius: 12px;
-}
-
-.qr-inner img {
+input {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
+  margin-bottom: 17px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #354363;
+  background: #101a31;
+  color: white;
+  font-size: 17px;
+  outline: none;
 }
-
-.scan-text {
-  color: #aab6d1;
-  font-size: 13px;
-  margin-top: 18px;
-  line-height: 1.7;
-}
-
-.footer {
+input:focus { border-color: var(--cyan); }
+input::placeholder { color: #75839e; }
+.primary, .app-button {
+  width: 100%;
+  display: block;
   text-align: center;
-  padding: 20px 20px 24px;
-  background: #ffffff05;
-  border-top: 1px solid #ffffff12;
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .15s, border-color .2s;
 }
-
-.footer h3 {
-  color: #b9c8eb;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  line-height: 1.8;
+.primary {
+  color: #08101e;
+  background: linear-gradient(100deg, #48eaff, #a48aff);
+  box-shadow: 0 7px 22px #3cbaff20;
+  padding: 16px 10px;
+  font-size: 14px;
 }
-
-.footer p {
-  margin-top: 12px;
+.primary:active, .app-button:active { transform: scale(.98); }
+.apps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 14px;
+}
+.app-button {
+  color: #e8eeff;
+  background: #151f38;
+  border: 1px solid #344363;
+  overflow-wrap: anywhere;
+}
+.app-button:hover { border-color: var(--cyan); }
+.app-button span {
+  display: block;
+  font-size: 21px;
+  margin-bottom: 7px;
+}
+.small-note {
+  color: #99a8c6;
   font-size: 11px;
-  color: #6f7f9f;
+  line-height: 1.7;
+  text-align: center;
+  margin-top: 14px;
 }
-
+.qr-heading {
+  text-align: center;
+  color: #d8e4ff;
+  font-size: 13px;
+  margin: 25px 0 14px;
+  letter-spacing: 1px;
+}
+.qr-frame {
+  width: 100%;
+  max-width: 235px;
+  margin: auto;
+  padding: 7px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #00eaff, #985bff, #00eaff);
+  background-size: 200% 200%;
+  animation: shimmer 5s linear infinite;
+}
+.qr-inner { padding: 10px; background: white; border-radius: 11px; }
+.qr-inner img { width: 100%; height: auto; display: block; }
+.qr-fallback {
+  color: #536078;
+  font-size: 12px;
+  text-align: center;
+  padding: 22px 6px;
+}
+#status {
+  margin-top: 13px;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+  color: #ffe09b;
+  overflow-wrap: anywhere;
+}
+footer {
+  padding: 18px 12px;
+  text-align: center;
+  background: #ffffff05;
+  border-top: 1px solid #ffffff10;
+  color: #8b9bb9;
+  font-size: 11px;
+  line-height: 1.9;
+}
+footer strong { color: #c8d6f2; letter-spacing: 1px; }
+@media (max-width: 340px) {
+  .section { padding-left: 14px; padding-right: 14px; }
+  .apps { gap: 6px; }
+  .app-button { font-size: 11px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
+  *, *::before, *::after { animation: none !important; }
 }
 </style>
 </head>
 
 <body>
-
 <main class="portal">
-  <div class="top-line"></div>
+  <div class="topline"></div>
 
-  <header class="header">
+  <header>
     <div class="logo">GT</div>
     <h1>Growth Tamilan</h1>
-    <p class="tagline">Official Payment Portal</p>
+    <p class="kicker">OFFICIAL PAYMENT PORTAL</p>
   </header>
-
-  <div class="divider"></div>
 
   <section class="welcome">
     <h2>Welcome to <span>Growth Tamilan</span></h2>
-
     <p>
       We Always Help to Your Growth.<br>
       Your Official Social Media Agency Partner.
     </p>
-
-    <div class="badge">
-      <span class="dot"></span>
-      SECURE PAYMENT GATEWAY
-    </div>
+    <div class="secure">✓ UPI PAYMENT OPTIONS</div>
   </section>
 
-  <section class="qr-section">
-    <h3 class="qr-title">✦ SCAN &amp; PAY ✦</h3>
+  <section class="section">
+    <label for="amount">Enter Payment Amount (₹)</label>
+    <input
+      id="amount"
+      type="number"
+      min="1"
+      max="1000000"
+      step="0.01"
+      inputmode="decimal"
+      placeholder="Enter amount"
+      required
+    >
+
+    <button class="primary" id="pay">
+      Pay with Any UPI App →
+    </button>
+
+    <div class="apps">
+      <button class="app-button" data-app="phonepe">
+        <span>🟣</span>PhonePe
+      </button>
+      <button class="app-button" data-app="gpay">
+        <span>🔵</span>Google Pay
+      </button>
+      <button class="app-button" data-app="paytm">
+        <span>🔷</span>Paytm
+      </button>
+      <button class="app-button" data-app="bhim">
+        <span>🇮🇳</span>BHIM UPI
+      </button>
+      <button class="app-button" data-app="amazon">
+        <span>🛍️</span>Amazon Pay
+      </button>
+      <button class="app-button" data-app="whatsapp">
+        <span>💬</span>WhatsApp Pay
+      </button>
+      <button class="app-button" data-app="cred">
+        <span>⚫</span>CRED
+      </button>
+      <button class="app-button" data-app="mobikwik">
+        <span>💳</span>MobiKwik
+      </button>
+      <button class="app-button" data-app="navi">
+        <span>🔹</span>Navi
+      </button>
+    </div>
+
+    <p class="small-note">
+      Choose a payment app available on your device.
+      Confirm the recipient and amount in your UPI app
+      before completing payment.
+    </p>
+
+    <h3 class="qr-heading">— OR SCAN QR CODE —</h3>
 
     <div class="qr-frame">
       <div class="qr-inner">
         <img
           src="./Screenshot_20261009-185436.png"
-          alt="Growth Tamilan Payment QR Code"
+          alt="Growth Tamilan payment QR code"
+          onerror="this.style.display='none';document.getElementById('qrError').style.display='block';"
         >
+        <p id="qrError" class="qr-fallback" style="display:none">
+          QR image not found.<br>
+          Upload Screenshot_20261009-185436.png
+          to the same GitHub folder.
+        </p>
       </div>
     </div>
 
-    <p class="scan-text">
-      Scan the QR code using your UPI app<br>
-      to make your payment.
-    </p>
+    <p id="status" role="status" aria-live="polite"></p>
   </section>
 
-  <footer class="footer">
-    <h3>GROW YOUR BRAND. BUILD YOUR FUTURE.</h3>
-    <p>© 2026 Growth Tamilan. All rights reserved.</p>
+  <footer>
+    <strong>GROW YOUR BRAND. BUILD YOUR FUTURE.</strong><br>
+    Growth Tamilan · Official Payment Portal<br>
+    Payment completion must be verified separately.
   </footer>
 </main>
 
+<script>
+const UPI_ID = "BHARATPE2G0N0M1F1I90961@unitype";
+const PAYEE_NAME = "Growth Tamilan";
+
+function getPaymentLink() {
+  const field = document.getElementById("amount");
+  const amount = Number(field.value);
+  const status = document.getElementById("status");
+
+  if (
+    !field.value ||
+    !Number.isFinite(amount) ||
+    amount <= 0 ||
+    amount > 1000000
+  ) {
+    status.textContent = "Please enter a valid amount.";
+    field.focus();
+    return null;
+  }
+
+  const params = new URLSearchParams({
+    pa: UPI_ID,
+    pn: PAYEE_NAME,
+    am: amount.toFixed(2),
+    cu: "INR",
+    tn: "Growth Tamilan payment"
+  });
+
+  return "upi://pay?" + params.toString();
+}
+
+function openUPI(appName) {
+  const link = getPaymentLink();
+  if (!link) return;
+
+  const status = document.getElementById("status");
+
+  status.textContent = appName
+    ? "Opening UPI. Choose " + appName +
+      " if it appears in your device's app chooser."
+    : "Opening a compatible UPI payment app. Verify the payee and amount.";
+
+  // Standard UPI deep link: the device decides which compatible
+  // payment application can handle this request.
+  window.location.href = link;
+}
+
+document.getElementById("pay").addEventListener("click", () => {
+  openUPI("");
+});
+
+document.querySelectorAll("[data-app]").forEach(button => {
+  button.addEventListener("click", () => {
+    openUPI(button.dataset.app);
+  });
+});
+</script>
 </body>
 </html>
