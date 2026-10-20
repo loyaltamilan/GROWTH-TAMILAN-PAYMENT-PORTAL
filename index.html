@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050816">
+<title>Growth Tamilan | Official Payment Portal</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  background: #050816;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  background:
+    radial-gradient(circle at 20% 30%, #00d9ff35, transparent 30%),
+    radial-gradient(circle at 80% 60%, #7c3aed45, transparent 30%),
+    radial-gradient(circle at 50% 90%, #0066ff30, transparent 30%);
+  animation: aurora 12s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes aurora {
+  0% { transform: translate(-4%, -3%) rotate(0deg) scale(1); }
+  100% { transform: translate(4%, 3%) rotate(8deg) scale(1.12); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 18px #00d9ff25, 0 0 45px #7848ff18; }
+  50% { box-shadow: 0 0 35px #00d9ff50, 0 0 75px #7848ff30; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.portal {
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  border: 1px solid #ffffff20;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #111a32ed, #090d20f5);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+  animation: glow 5s ease-in-out infinite;
+}
+
+.top-line {
+  height: 3px;
+  background: linear-gradient(90deg, #00eaff, #8b5cf6, #00eaff);
+  background-size: 200%;
+  animation: moveLine 4s linear infinite;
+}
+
+@keyframes moveLine {
+  to { background-position: 200% 0; }
+}
+
+.header {
+  text-align: center;
+  padding: 34px 20px 25px;
+}
+
+.logo {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 17px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #00d9ff, #6754ff);
+  color: #fff;
+  font-size: 25px;
+  font-weight: 900;
+  box-shadow: 0 0 35px #00c8ff40;
+  animation: float 4s ease-in-out infinite;
+}
+
+.header h1 {
+  font-size: clamp(26px, 7vw, 33px);
+  letter-spacing: 1px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #71eaff, #c8b8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  margin-top: 12px;
+  color: #a8b6d7;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.divider {
+  height: 1px;
+  margin: 0 25px;
+  background: linear-gradient(90deg, transparent, #ffffff35, transparent);
+}
+
+.welcome {
+  text-align: center;
+  padding: 25px 22px 18px;
+}
+
+.welcome h2 {
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.welcome h2 span {
+  color: #50dcff;
+}
+
+.welcome p {
+  color: #aab6d1;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 9px 14px;
+  border: 1px solid #00e0ff45;
+  background: #00d9ff0d;
+  color: #8cecff;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #45f6a6;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #45f6a6;
+}
+
+.qr-section {
+  padding: 12px 24px 28px;
+  text-align: center;
+}
+
+.qr-title {
+  font-size: 14px;
+  color: #e2eaff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.qr-frame {
+  position: relative;
+  width: min(100%, 285px);
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00eaff, #8b5cf6, #00eaff);
+  background-size: 200% 200%;
+  animation: moveLine 5s linear infinite;
+}
+
+.qr-inner {
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.qr-inner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.scan-text {
+  color: #aab6d1;
+  font-size: 13px;
+  margin-top: 18px;
+  line-height: 1.7;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 20px 24px;
+  background: #ffffff05;
+  border-top: 1px solid #ffffff12;
+}
+
+.footer h3 {
+  color: #b9c8eb;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+}
+
+.footer p {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #6f7f9f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="portal">
+  <div class="top-line"></div>
+
+  <header class="header">
+    <div class="logo">GT</div>
+    <h1>Growth Tamilan</h1>
+    <p class="tagline">Official Payment Portal</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <section class="welcome">
+    <h2>Welcome to <span>Growth Tamilan</span></h2>
+
+    <p>
+      We Always Help to Your Growth.<br>
+      Your Official Social Media Agency Partner.
+    </p>
+
+    <div class="badge">
+      <span class="dot"></span>
+      SECURE PAYMENT GATEWAY
+    </div>
+  </section>
+
+  <section class="qr-section">
+    <h3 class="qr-title">✦ SCAN &amp; PAY ✦</h3>
+
+    <div class="qr-frame">
+      <div class="qr-inner">
+        <img
+          src="./Screenshot_20261009-185436.png"
+          alt="Growth Tamilan Payment QR Code"
+        >
+      </div>
+    </div>
+
+    <p class="scan-text">
+      Scan the QR code using your UPI app<br>
+      to make your payment.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <h3>GROW YOUR BRAND. BUILD YOUR FUTURE.</h3>
+    <p>© 2026 Growth Tamilan. All rights reserved.</p>
+  </footer>
+</main>
+
+</body>
+</html>
